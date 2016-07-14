@@ -1,4 +1,4 @@
-package japanese_era
+package era_jp
 
 var eras = []struct {
 	from int

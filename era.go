@@ -1,4 +1,5 @@
-package era_jp
+// Package erajp is library for japanese era.
+package erajp
 
 import (
 	"fmt"
@@ -7,6 +8,7 @@ import (
 
 //go:generate go run tool/scrape.go > table.go
 
+// Era is type for indicating japanese era.
 type Era int
 
 func (era Era) String() string {
@@ -17,6 +19,7 @@ func (era Era) String() string {
 	return s
 }
 
+// ToEra return era name from year.
 func ToEra(y int) string {
 	for i := len(eras) - 1; i >= 0; i-- {
 		if eras[i].Year <= y {
@@ -26,6 +29,7 @@ func ToEra(y int) string {
 	return ""
 }
 
+// ToEraFromTime return era name from time.
 func ToEraFromTime(t time.Time) string {
 	loc, _ := time.LoadLocation("JST")
 	if loc == nil {

@@ -1,4 +1,4 @@
-package era_jp
+package erajp
 
 import (
 	"testing"

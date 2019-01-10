@@ -31,7 +31,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Fprint(out, `package era_jp
+	fmt.Fprint(out, `package erajp
 
 var eras = []struct {
 	Name  string
@@ -39,7 +39,7 @@ var eras = []struct {
 	Year  int
 	Month int
 	Day   int
-} {
+}{
 `)
 
 	doc.Find(`table[border="1"] tr`).Each(func(n int, sel *goquery.Selection) {

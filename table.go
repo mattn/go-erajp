@@ -1,4 +1,4 @@
-package era_jp
+package erajp
 
 var eras = []struct {
 	Name  string
@@ -6,7 +6,7 @@ var eras = []struct {
 	Year  int
 	Month int
 	Day   int
-} {
+}{
 	{Name: "白雉", Ruby: "はくち", Year: 650, Month: 2, Day: 15},
 	{Name: "朱鳥", Ruby: "しゅちょう（すちょう）", Year: 686, Month: 7, Day: 20},
 	{Name: "大宝", Ruby: "たいほう（だいほう）", Year: 701, Month: 3, Day: 21},

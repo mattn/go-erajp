@@ -2,6 +2,7 @@ package era_jp
 
 import (
 	"testing"
+	"time"
 )
 
 var testcases = []struct {
@@ -26,5 +27,14 @@ func TestSimple(t *testing.T) {
 		if got != expected {
 			t.Fatalf("Expected %v for year %v, but %v:", expected, year, got)
 		}
+	}
+}
+
+func TestNow(t *testing.T) {
+	now := time.Now()
+	got := ToEraFromTime(now)
+	expected := "平成"
+	if got != expected {
+		t.Fatalf("Expected %v for year %v, but %v:", expected, now, got)
 	}
 }

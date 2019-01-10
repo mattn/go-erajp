@@ -19,7 +19,22 @@ var testcases = []struct {
 	{2016, `平成`},
 }
 
-func TestSimple(t *testing.T) {
+func TestEra(t *testing.T) {
+	year := 2030
+	got := Era(year).String()
+	expected := "平成"
+	if got != expected {
+		t.Fatalf("Expected %v for year %v, but %v:", expected, year, got)
+	}
+	year = 640
+	got = Era(year).String()
+	expected = "640"
+	if got != expected {
+		t.Fatalf("Expected %v for year %v, but %v:", expected, year, got)
+	}
+}
+
+func TestToEra(t *testing.T) {
 	for _, testcase := range testcases {
 		year := testcase.year
 		got := ToEra(year)

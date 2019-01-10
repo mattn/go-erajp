@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-//go:generate go run tool/scrape.go > table.go
+//go:generate go run tool/scrape.go
 
 // Era is type for indicating japanese era.
 type Era int

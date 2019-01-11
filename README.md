@@ -1,4 +1,4 @@
-# go-era_jp
+# go-erajp
 
 Go library for japanese era
 

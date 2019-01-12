@@ -42,6 +42,7 @@ var eras = []struct {
 }{
 `)
 
+	var prevy, prevm, prevd string
 	doc.Find(`table[border="1"] tr`).Each(func(n int, sel *goquery.Selection) {
 		cells := sel.Children().Filter("td")
 		tdnum := cells.Length()
@@ -70,7 +71,13 @@ var eras = []struct {
 			md[1] = "1"
 		}
 
+		if y[0] == prevy && md[0] == prevm && md[1] == prevd {
+			return
+		}
 		fmt.Fprintf(out, "\t{Name: %q, Ruby: %q, Year: %v, Month: %v, Day: %v},\n", name, ruby, y[0], md[0], md[1])
+		prevy = y[0]
+		prevm = md[0]
+		prevd = md[1]
 	})
 	fmt.Fprintln(out, "}")
 }

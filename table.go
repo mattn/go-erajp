@@ -248,4 +248,5 @@ var eras = []struct {
 	{Name: "大正", Ruby: "たいしょう", Year: 1912, Month: 7, Day: 30},
 	{Name: "昭和", Ruby: "しょうわ", Year: 1926, Month: 12, Day: 25},
 	{Name: "平成", Ruby: "へいせい", Year: 1989, Month: 1, Day: 8},
+	{Name: "令和", Ruby: "れいわ", Year: 2019, Month: 5, Day: 1},
 }

@@ -17,12 +17,14 @@ var testcases = []struct {
 	{1988, `昭和`},
 	{1989, `平成`},
 	{2016, `平成`},
+	{2019, `令和`},
+	{2039, `令和`},
 }
 
 func TestEra(t *testing.T) {
 	year := 2030
 	got := Era(year).String()
-	expected := "平成"
+	expected := "令和"
 	if got != expected {
 		t.Fatalf("Expected %v for year %v, but %v:", expected, year, got)
 	}

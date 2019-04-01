@@ -5,7 +5,7 @@ Go library for japanese era
 ## Usage
 
 ```go
-fmt.Println(erajp.ToEraFromTime(time.Now())) // 平成
+fmt.Println(erajp.ToEraFromTime(time.Now())) // 令和
 ```
 
 ## License

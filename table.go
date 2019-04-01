@@ -8,6 +8,7 @@ var eras = []struct {
 	Month       int
 	Day         int
 }{
+	{Name: "大化", Ruby: "たいか", RubyInitial: "T", Year: 645, Month: 6, Day: 19},
 	{Name: "白雉", Ruby: "はくち", RubyInitial: "H", Year: 650, Month: 2, Day: 15},
 	{Name: "朱鳥", Ruby: "しゅちょう（すちょう）", RubyInitial: "S", Year: 686, Month: 7, Day: 20},
 	{Name: "大宝", Ruby: "たいほう（だいほう）", RubyInitial: "T", Year: 701, Month: 3, Day: 21},

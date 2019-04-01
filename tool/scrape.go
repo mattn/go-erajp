@@ -13,6 +13,68 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+var initials = map[rune]rune{
+	'あ': 'A',
+	'い': 'I',
+	'う': 'U',
+	'え': 'E',
+	'お': 'O',
+	'か': 'K',
+	'き': 'K',
+	'く': 'K',
+	'け': 'K',
+	'こ': 'K',
+	'さ': 'S',
+	'し': 'S',
+	'す': 'S',
+	'せ': 'S',
+	'そ': 'S',
+	'た': 'T',
+	'ち': 'T',
+	'つ': 'T',
+	'て': 'T',
+	'と': 'T',
+	'な': 'N',
+	'に': 'N',
+	'ぬ': 'N',
+	'ね': 'N',
+	'の': 'N',
+	'は': 'H',
+	'ひ': 'H',
+	'ふ': 'H',
+	'へ': 'H',
+	'ほ': 'H',
+	'ま': 'M',
+	'み': 'M',
+	'む': 'M',
+	'め': 'M',
+	'も': 'M',
+	'や': 'Y',
+	'ゆ': 'Y',
+	'よ': 'Y',
+	'ら': 'R',
+	'り': 'R',
+	'る': 'R',
+	'れ': 'R',
+	'ろ': 'R',
+	'わ': 'W',
+	'ゐ': 'W',
+	'ゑ': 'W',
+	'ぶ': 'B',
+	'じ': 'J',
+	'が': 'G',
+	'げ': 'G',
+	'だ': 'D',
+}
+
+func rubyInitial(s string) string {
+	r, ok := initials[[]rune(s)[0]]
+	if !ok {
+		panic("not found: " + s)
+	}
+	return string(r)
+}
+
 func main() {
 	out, err := os.Create("table.go")
 	if err != nil {
@@ -34,11 +96,12 @@ func main() {
 	fmt.Fprint(out, `package erajp
 
 var eras = []struct {
-	Name  string
-	Ruby  string
-	Year  int
-	Month int
-	Day   int
+	Name        string
+	Ruby        string
+	RubyInitial string
+	Year        int
+	Month       int
+	Day         int
 }{
 `)
 
@@ -76,7 +139,7 @@ var eras = []struct {
 		if y[0] == prevy && md[0] == prevm && md[1] == prevd {
 			return
 		}
-		fmt.Fprintf(out, "\t{Name: %q, Ruby: %q, Year: %v, Month: %v, Day: %v},\n", name, ruby, y[0], md[0], md[1])
+		fmt.Fprintf(out, "\t{Name: %q, Ruby: %q, RubyInitial: %q, Year: %v, Month: %v, Day: %v},\n", name, ruby, rubyInitial(ruby), y[0], md[0], md[1])
 		prevy = y[0]
 		prevm = md[0]
 		prevd = md[1]
@@ -86,7 +149,7 @@ var eras = []struct {
 		}
 	})
 	if !hasReiwa {
-		fmt.Fprintf(out, "\t{Name: %q, Ruby: %q, Year: %v, Month: %v, Day: %v},\n", "令和", "れいわ", 2019, 5, 1)
+		fmt.Fprintf(out, "\t{Name: %q, Ruby: %q, RubyInitial: %q, Year: %v, Month: %v, Day: %v},\n", "令和", "れいわ", "R", 2019, 5, 1)
 	}
 	fmt.Fprintln(out, "}")
 }

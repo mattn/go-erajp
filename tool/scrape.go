@@ -42,6 +42,8 @@ var eras = []struct {
 }{
 `)
 
+	hasReiwa := false
+
 	var prevy, prevm, prevd string
 	doc.Find(`table[border="1"] tr`).Each(func(n int, sel *goquery.Selection) {
 		cells := sel.Children().Filter("td")
@@ -78,6 +80,13 @@ var eras = []struct {
 		prevy = y[0]
 		prevm = md[0]
 		prevd = md[1]
+
+		if !hasReiwa && name == "令和" {
+			hasReiwa = true
+		}
 	})
+	if !hasReiwa {
+		fmt.Fprintf(out, "\t{Name: %q, Ruby: %q, Year: %v, Month: %v, Day: %v},\n", "令和", "れいわ", 2019, 5, 1)
+	}
 	fmt.Fprintln(out, "}")
 }

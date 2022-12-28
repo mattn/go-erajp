@@ -17,12 +17,20 @@ var formats = []string{
 }
 
 func main() {
-	if len(os.Args) == 2 {
+	if len(os.Args) == 1 {
+		ymd := time.Now()
+		if item := erajp.Find(ymd); item != nil {
+			fmt.Printf("%s%d年\n", item.Name, ymd.Year()-item.Year+1)
+			return
+		}
+	} else if len(os.Args) == 2 {
 		for _, format := range formats {
 			ymd, err := time.Parse(format, os.Args[1])
 			if err == nil {
-				fmt.Println(erajp.ToEraFromTime(ymd))
-				return
+				if item := erajp.Find(ymd); item != nil {
+					fmt.Printf("%s%d年\n", item.Name, ymd.Year()-item.Year+1)
+					return
+				}
 			}
 		}
 	}

@@ -43,3 +43,18 @@ func ToEraFromTime(t time.Time) string {
 	}
 	return ""
 }
+
+// FindEra return EraItem.
+func Find(t time.Time) *EraItem {
+	loc, _ := time.LoadLocation("JST")
+	if loc == nil {
+		loc = time.Local
+	}
+	for i := len(eras) - 1; i >= 0; i-- {
+		et := time.Date(eras[i].Year, time.Month(eras[i].Month), eras[i].Day, 0, 0, 0, 0, loc)
+		if t.After(et) {
+			return &eras[i]
+		}
+	}
+	return nil
+}

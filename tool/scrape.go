@@ -98,14 +98,16 @@ func main() {
 	}
 	fmt.Fprint(out, `package erajp
 
-var eras = []struct {
+type EraItem struct {
 	Name        string
 	Ruby        string
 	RubyInitial string
 	Year        int
 	Month       int
 	Day         int
-}{
+}
+
+var eras = []EraItem {
 `)
 
 	hasReiwa := false

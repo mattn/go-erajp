@@ -50,8 +50,20 @@ func TestToEra(t *testing.T) {
 func TestNow(t *testing.T) {
 	now := time.Now()
 	got := ToEraFromTime(now)
-	expected := "平成"
+	expected := "令和"
 	if got != expected {
 		t.Fatalf("Expected %v for year %v, but %v:", expected, now, got)
+	}
+}
+
+func TestFind(t *testing.T) {
+	now := time.Now()
+	got := Find(now)
+	if got == nil {
+		t.Fatalf("Expected non-nil")
+	}
+	expected := "令和"
+	if got.Name != expected {
+		t.Fatalf("Expected %s for year %v, but %v:", expected, now, got.Name)
 	}
 }
